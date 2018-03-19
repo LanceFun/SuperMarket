@@ -1,0 +1,20 @@
+Bread
+4.00
+500
+Gram
+300
+Orange Juice
+2.28
+1.75
+Liter
+825
+Banana
+1.45
+1.26
+Kilogram
+1121
+Bear Paws Box
+4.49
+270
+Gram
+1080

@@ -1,0 +1,9 @@
+Short Term:
+1. Move food into array
+2. Read player data from file
+3. Write to player data before program stops
+4. Get the menus working
+5. Change prices every minute by %-15 to %15
+
+Long Term:
+1. Extend food list
