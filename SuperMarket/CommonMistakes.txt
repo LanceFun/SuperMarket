@@ -1,0 +1,2 @@
+1. int hello = 1;  Everytime the loop restarts
+2. 
