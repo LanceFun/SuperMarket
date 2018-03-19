@@ -4,6 +4,9 @@ Short Term:
 3. Write to player data before program stops
 4. Get the menus working
 5. Change prices every minute by %-15 to %15
+6. Use ArrayList instead of array
+7. Use BigDecimal and getCurrencyInstance for money
 
 Long Term:
 1. Extend food list
+2. Add GUI
