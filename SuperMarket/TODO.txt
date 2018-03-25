@@ -1,11 +1,8 @@
 Short Term:
-1. Move food into array
-2. Read player data from file
-3. Write to player data before program stops
-4. Get the menus working
-5. Change prices every minute by %-15 to %15
+1. Settings File read/write
+5. Change prices every minute by %-15 to %15 instead of 30 to -30 cents
 6. Use ArrayList instead of array
-7. Use BigDecimal and getCurrencyInstance for money
+7. Use BigDecimal for money
 
 Long Term:
 1. Extend food list

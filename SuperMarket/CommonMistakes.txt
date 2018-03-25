@@ -1,2 +1,2 @@
 1. int hello = 1;  Everytime the loop restarts
-2. 
+2. Add .0 at end of double
