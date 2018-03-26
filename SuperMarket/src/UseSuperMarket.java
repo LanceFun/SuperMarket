@@ -11,6 +11,10 @@ public class UseSuperMarket {
 		//Initialize Variables
 		boolean exit = false;
 		
+//		if (Settings.hasPlayed = false) {
+//			PlayerManager.setUp();
+//		}
+		
 		int foodNum = 0;
 		int invNum = 0;
 		
@@ -21,22 +25,20 @@ public class UseSuperMarket {
 		
 		Timer timer = new Timer();
 		
-		while (playerScanner.hasNextLine()) {
-			findPlayerData(playerScanner, invNum);
-		}
-		
-		while (settingScanner.hasNextLine()) {
-			findSettings(settingScanner);
-		}
-
-	//	out.println(Inventory.inventory[invNum]);
-		
 		//Run findFood until there is no more food left
 		while (foodScanner.hasNextLine()) {
             findFood(foodScanner, foodNum);
     		foodNum++;
         }
 		
+		findPlayerData(playerScanner, invNum);
+		
+		while (settingScanner.hasNextLine()) {
+			findSettings(settingScanner);
+		}
+		
+	//	out.println(Inventory.inventory[invNum]);
+
 		//Start updating prices every minute
 		timer.schedule(new UpdatePrices(), 0, 60000);
 		
@@ -68,7 +70,7 @@ public class UseSuperMarket {
 				break;
 			case '3':
 				out.println("Prices: ");
-				UpdatePrices.showPrices();
+				UpdatePrices.showPricesWithChanges();
 				break;
 			case 'e':
 				out.println("Exit");
@@ -95,6 +97,7 @@ public class UseSuperMarket {
 						out.println("Invalid Value!");
 						break;
 					}
+				break;
 				case 1:
 					out.println("Are you sure you want to restart the game?");
 					int restartGameResponse = keyboard.nextInt();
@@ -103,13 +106,12 @@ public class UseSuperMarket {
 						out.println("Game not restarting!");
 						break;
 					case 1:
-						PlayerManager.restartGame();
-						out.println("Game restarted!");
+						PlayerManager.restartGame(keyboard);
 						break;
-					}
 					default:
 						out.println("Invalid Value!");
 						break;
+					}
 				}
 				break;
 			default:
@@ -143,7 +145,7 @@ public class UseSuperMarket {
 		}
 		
 		Food.nameA[foodNum] = aFood.getName();
-		Food.priceA[foodNum] = aFood.getPrice();
+		Food.priceOld[foodNum] = aFood.getPrice();
 		Food.massA[foodNum] = aFood.getMass();
 		Food.scaleA[foodNum] = aFood.getScale();
 		Food.caloriesA[foodNum] = aFood.getCalories();
@@ -155,12 +157,20 @@ public class UseSuperMarket {
 	static void findPlayerData(Scanner aScanner, int invNum) {
 		PlayerManager.setName(aScanner.nextLine());
 		PlayerManager.setBalence(aScanner.nextDouble());
-		
-		while (aScanner.hasNextLine()) {
+		aScanner.hasNextLine();
+		while (aScanner.hasNextInt()) {
 			Inventory.inventory[invNum] = aScanner.nextInt();
 			//out.println(Inventory.inventory[invNum]);
 			invNum++;
 		}
+		
+		invNum = 0;
+		
+		while (aScanner.hasNextDouble()) {
+			Food.priceA[invNum] = aScanner.nextDouble();
+			invNum++;
+		}
+		
 	}
 	
 	static void findSettings(Scanner aScanner) {
@@ -193,12 +203,27 @@ public class UseSuperMarket {
 			writer.println(PlayerManager.getBalence());
 			int loopNum = 1;
 			for (int item : Inventory.inventory) {
-				writer.print(item);
-				if (loopNum <= Inventory.inventory.length - 1) {
-					writer.println();
+				if (loopNum < Inventory.inventory.length) {
+					writer.print(item + " ");
+				} else {
+					writer.println(item);
+				}
+				loopNum++;
+			}
+			
+			loopNum = 1;
+			
+			for (double price : Food.priceA) {
+				if (loopNum <= Food.priceA.length) {
+					writer.print(price + " ");
 					loopNum++;
+				} else {
+					writer.println(price);
 				}
 			}
+			writer.println();
+			writer.print(true);
+			
 			try {writer.close();} catch  (Exception ex) {}
 		} catch (IOException ex) {}
 	}

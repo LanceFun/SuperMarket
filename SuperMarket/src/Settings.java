@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Settings {
 	public static boolean autoPrices = false;
+	public static boolean hasPlayed = false;
 	
 	public static ArrayList<String> settingName = new ArrayList<String>();
 	public static ArrayList<String> settingValue = new ArrayList<String>();

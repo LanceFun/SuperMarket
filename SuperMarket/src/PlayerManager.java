@@ -6,6 +6,8 @@ public class PlayerManager {
 	private static String name;
 	private static double balence;
 	
+	public static boolean readFromPlayerData = false;
+	
 	//Initialize Setters and Getters
 	public static String getName() {
 		return name;
@@ -20,10 +22,14 @@ public class PlayerManager {
 		PlayerManager.balence = balence;
 	}
 	
+//	public static void setUp() {
+//		readFromPlayerData = true;
+//		Settings.hasPlayed = true;
+//	}
+	
 	@SuppressWarnings("unused")
-	public static void restartGame() {
+	public static void restartGame(Scanner enterName) {
 		out.println("Enter new name: ");
-		Scanner enterName = new Scanner(System.in);
 		String newName = enterName.next();
 		PlayerManager.setName(newName);
 		out.println("Welcome to the SuperMarket " + PlayerManager.getName());
@@ -33,6 +39,13 @@ public class PlayerManager {
 			Inventory.inventory[Loop] = 10;
 			Loop++;
 		}
-		enterName.close();
+		
+		//FIX
+		Loop = 0;
+		for (double price : Food.priceA) {
+			Food.priceA[Loop] = Food.priceOld[Loop];
+			Loop++;
+		}
+		out.println("Game restarted!");
 	}
 }

@@ -11,6 +11,7 @@ public class Food {
 	
 	static String nameA[] = new String[4];
 	static double priceA[] = new double[4];
+	static double priceOld[] = new double[4];
 	static double massA[] = new double[4];
 	static Scale scaleA[] = new Scale[4];
 	static int caloriesA[] = new int[4];
