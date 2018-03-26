@@ -1,0 +1,14 @@
+
+
+Version:	3.10
+CmdLine:	C:\Users\CapnAwesome\Desktop\SuperMarket\SuperMarket 1.1.1.exe --l4j-debug
+WOW64:		yes
+Create mutex:	Calc
+Error:		Instance already exists.
+
+
+Version:	3.10
+CmdLine:	C:\Users\CapnAwesome\Desktop\SuperMarket\SuperMarket 1.1.1.exe --l4j-debug
+WOW64:		yes
+Create mutex:	Calc
+Error:		Instance already exists.
